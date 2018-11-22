@@ -1,2 +1,14 @@
 /* CSS Document */
 /* Less */
+
+.w1200{
+	width: 1200px;
+	display: block;
+	margin:0 auto;
+}
+.clothes-warp{
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: block;
+	height: 429px
+}
