@@ -1,0 +1,66 @@
+// 公共颜色
+@Maincolor: #666;
+//公共a标签色值
+@Acolor: #003a8b;
+
+
+// 公共圆角
+.ComRadius(@radius: 5px) {
+    border-radius: @radius;
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+}
+//公共阴影
+.boxshadow(@arguments){
+    -webkit-box-shadow:@arguments;
+    -moz-box-shadow:@arguments;
+    box-shadow:@arguments;
+}
+//公共动画效果
+.animation(@args) {
+    -webkit-animation: @args;
+    -moz-animation: @args;
+    -ms-animation: @args;
+    -o-animation: @args;
+    animation: @args;
+}
+//公共过度
+.transition(@args: all 0.3s linear) {
+    -webkit-transition: @args;
+    -o-transition: @args;
+    -ms-transition: @args;
+    -moz-transition: @args;
+    transition: @args;
+}
+// 共用变换
+.transform(@args) {
+    -webkit-transform:@args;
+    -moz-transform:@args;
+    transform:@args;
+}
+// 共用rgba(兼容ie)
+
+#rgba(@r,@g,@b,@a){
+    @c: rgba(@r,@g,@b,@a); 
+    @c2 :argb(@c);
+   /* for IE9 IE8 IE7 not sure about IE6*/
+    filter:~"progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='@{c2}', endColorstr='@{c2}')";
+    background-color:@c;
+    :root &{
+        /* 
+         * IE9 由于rgba和filter都支持，会导致两个颜色叠加，使用hack去除 
+         * \9 代表 IE9 以下浏览器支持
+         * :root 只有 IE9+ 以及其他现代浏览器支持
+         * IE10 以上不再支持 filter
+        */
+        filter:none;
+    }
+}
+.opacity (@opacity) {
+    @opacityPercentage: @opacity * 100;
+    opacity: @opacity;
+    -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=(@{opacityPercentage}))"; 
+    filter: ~"alpha(opacity = (@{opacityPercentage}))";
+}
+
+
